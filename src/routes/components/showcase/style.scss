@@ -1,0 +1,21 @@
+
+.showcase {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 40px;
+    width: fit-content;
+    gap: 30px;
+    transition: transform 0.2s ease-out;
+
+    article {
+        height: 300px;
+        width: 300px;
+        background-color: red;
+    }
+}
