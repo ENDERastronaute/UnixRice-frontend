@@ -1,7 +1,7 @@
 
 <script lang="ts">
   import { onMount } from "svelte";
-  import Loading from "../../../components/loading/loading.svelte";
+  import Loading from "$lib/loading/loading.svelte";
   import PostCard from "../postCard/postCard.svelte";
 
     let posts: any[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];

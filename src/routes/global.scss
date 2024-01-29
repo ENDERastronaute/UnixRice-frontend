@@ -22,3 +22,33 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+:global(.submit, .primary) {
+    background: rgb(212, 94, 0);
+    background: linear-gradient(164deg, rgb(212,94,0) 0%, rgb(255,170,0) 100%);
+    border: none;
+    color: white;
+    box-shadow: 0px 5px 20px -3px rgba(212,94,0,0.3);
+    transition: .2s ease-in-out;
+}
+
+:global(.submit:hover, .primary:hover) {
+    background: rgb(170, 77, 0);
+    background: linear-gradient(102deg, rgb(212,94,0) 0%, rgb(255,170,0) 100%);
+    box-shadow: 0px 5px 20px -3px rgba(212,94,0,0.6);
+}
+
+:global(.cancel) {
+    background: rgb(117, 117, 117);
+    background: linear-gradient(164deg, rgb(119, 119, 119) 0%, rgb(202, 202, 209) 100%);
+    border: none;
+    color: white;
+    box-shadow: 0px 5px 20px -3px rgba(119, 119, 119, 0.3);
+    transition: .2s ease-in-out;
+}
+
+:global(.cancel:hover) {
+    background: rgb(85, 85, 85);
+    background: linear-gradient(102deg, rgb(119, 119, 119) 0%, rgb(202, 202, 209) 100%);
+    box-shadow: 0px 5px 20px -3px rgba(119, 119, 119, 0.6);
+}

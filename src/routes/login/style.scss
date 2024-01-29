@@ -1,0 +1,105 @@
+
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 30px 50px;
+
+    form {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        padding: 0 50px;
+
+        fieldset {
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex-direction: column;
+            gap: 10px;
+            margin: 20px 0 0 0;
+            padding: 15px 0 0;
+            width: 100%;
+
+            input {
+                border: 0;
+                border-bottom: 2px solid #a8a8a8;
+                outline: 0;
+                background-color: transparent;
+                width: 100%;
+                transition: border-color .2s;
+                padding: 7px 0 7px 0;
+                font-weight: 300;
+                font-size: 1.3em;
+
+                &::placeholder {
+                    color: transparent;
+                }
+
+                &:placeholder-shown ~ label {
+                    font-size: 1em;
+                    cursor: text;
+                    top: 20px;
+                }
+
+                &:focus {
+                    border-width: 3px;
+                    padding-bottom: 6px;
+                    border-color: #5533ff;
+                    border-image-slice: 1;
+                
+                    ~ label {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        border: none;
+                        background: none;
+                        color: black;
+                    }
+                }
+            }
+
+            label {
+                position: absolute;
+                top: 0;
+                display: block;
+                transition: .2s;
+                font-size: 1em;
+            }
+
+            button {
+                position: absolute;
+                top: 20px;
+                right: 0;
+                border: none;
+                background: none;
+                color: black;
+            }
+        }
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 20px;
+
+            button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                border-radius: 5px;
+                height: 32px;
+                width: 100px;
+                font-weight: 400;
+                background-color: white;
+                font-size: 1rem;
+            }
+        }
+    }
+}

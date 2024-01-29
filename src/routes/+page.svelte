@@ -2,9 +2,13 @@
 	import Header from "./components/header/header.svelte";
 	import { IconArrowNarrowDown } from "@tabler/icons-svelte";
 	import { onMount } from "svelte";
-  import Showcase from "./components/showcase/showcase.svelte";
+  	import Showcase from "./components/showcase/showcase.svelte";
 
 	let showMenu = false;
+
+	function toggleMenu() {
+		showMenu = !showMenu
+	}
 
 	onMount(() => {
 		const main = document.querySelector(".main") as HTMLElement;
@@ -44,8 +48,13 @@
 </svelte:head>
 
 <Header bind:showMenu></Header>
+<menu class="menu" class:active={showMenu}>
+	<button class="close" on:click={toggleMenu}>close</button>
+	<a href="/login">login</a>
+	<a href="/sign-up">sign up</a>
+</menu>
 <main class="main">
-	<section class="landing" id="feur">
+	<section class="landing">
 		<h1>Nix4All</h1>
 		
 		<span class="scroll-icon">
