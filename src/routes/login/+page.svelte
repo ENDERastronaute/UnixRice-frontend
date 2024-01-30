@@ -13,9 +13,10 @@
 </script>
 
 <main class="main">
-    <h1>Login</h1>
-
+    <div class="bg"></div>
     <form action="">
+        <h1>Login</h1>
+
         <fieldset>
             <input type="text" name="username" id="username" placeholder="Username" required autocomplete="off">
             <label for="username">Username</label>
