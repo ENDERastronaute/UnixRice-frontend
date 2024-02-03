@@ -50,7 +50,7 @@
 <Header bind:showMenu></Header>
 <menu class="menu" class:active={showMenu}>
 	<button class="close" on:click={toggleMenu}>close</button>
-	<a href="/login">login</a>
+	<a href={import.meta.env.VITE_DISCORD}>login</a>
 	<a href="/sign-up">sign up</a>
 </menu>
 <main class="main">

