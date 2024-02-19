@@ -30,8 +30,6 @@
                     password: password
                 })
             })
-
-            window.location.href = import.meta.env.VITE_DISCORD;
         });
     })
 </script>

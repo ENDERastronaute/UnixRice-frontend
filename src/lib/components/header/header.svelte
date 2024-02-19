@@ -12,7 +12,7 @@
     <button on:click={toggleMenu} class="menu"><IconMenu2 size={32}></IconMenu2></button>
     <div class="actions">
         <a href="/login">login</a>
-        <a href="/signup">signup</a>
+        <a href={import.meta.env.VITE_DISCORD}>signup</a>
     </div>
 </header>
 

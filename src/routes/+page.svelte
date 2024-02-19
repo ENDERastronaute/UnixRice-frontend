@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Header from "./components/header/header.svelte";
+	import Header from "$lib/components/header/header.svelte";
 	import { IconArrowNarrowDown } from "@tabler/icons-svelte";
 	import { onMount } from "svelte";
-  	import Showcase from "./components/showcase/showcase.svelte";
+  	import Showcase from "$lib/components/showcase/showcase.svelte";
 
 	let showMenu = false;
 
@@ -50,8 +50,8 @@
 <Header bind:showMenu></Header>
 <menu class="menu" class:active={showMenu}>
 	<button class="close" on:click={toggleMenu}>close</button>
-	<a href={import.meta.env.VITE_DISCORD}>login</a>
-	<a href="/sign-up">sign up</a>
+	<a href="/login">login</a>
+	<a href={import.meta.env.VITE_DISCORD}>sign up</a>
 </menu>
 <main class="main">
 	<section class="landing">

@@ -1,10 +1,11 @@
 
 <script lang="ts">
-  import { onMount } from "svelte";
-  import Loading from "$lib/loading/loading.svelte";
-  import PostCard from "../postCard/postCard.svelte";
+    import { onMount } from "svelte";
+    import Loading from "$lib/components/loading/loading.svelte";
+    import PostCard from "$lib/components/postCard/postCard.svelte";
+    import type Post from "$lib/models/post";
 
-    let posts: any[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
+    let posts: Post[] = [];
 
     onMount(() => {
         const section = document.querySelector('.mostviewed') as HTMLElement;
