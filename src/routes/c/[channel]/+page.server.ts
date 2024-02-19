@@ -2,12 +2,12 @@
 import { createPost, deletePost, fetchPosts, updatePost } from "$lib/server/posts";
 import type { PageServerLoadEvent } from "./$types.js";
 
-export function load({ cookies, params }: PageServerLoadEvent) {
-    cookies.set('category', params.category, { path: '/' });
+export async function load({ cookies, params }: PageServerLoadEvent) {
+    cookies.set('category', params.channel, { path: '/' });
     
-    const posts = fetchPosts(params.category);
-
-    if (posts) return posts;
+    const posts = await fetchPosts(params.channel);
+    
+    if (posts) return { posts: posts };
 }
 
 export const actions = {

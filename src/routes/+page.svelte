@@ -65,11 +65,11 @@
 		<h2>Channels</h2>
 
 		<div class="container">
-			<article class="rice">
-				<a href="/rice">Rice</a>
+			<article class="rices">
+				<a href="/c/rices">Rices</a>
 			</article>
-			<article class="help">
-				<a href="/help">Workspaces</a>
+			<article class="workspaces">
+				<a href="/c/workspaces">Workspaces</a>
 			</article>
 		</div>
 	</section>

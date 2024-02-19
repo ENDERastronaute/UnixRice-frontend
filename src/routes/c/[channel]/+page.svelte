@@ -1,4 +1,7 @@
 <script lang="ts">
+    import PostCard from "$lib/components/postCard/postCard.svelte";
+    import type Post from "$lib/models/post";
+
     export let data: any;
 </script>
 
@@ -12,3 +15,9 @@
 
 	<button type="submit">submit</button>
 </form>
+
+<div>
+    {#each data.posts as post}
+        <PostCard post={post}></PostCard>
+    {/each}
+</div>
