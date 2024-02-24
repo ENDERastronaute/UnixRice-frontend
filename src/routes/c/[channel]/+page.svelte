@@ -1,8 +1,8 @@
 <script lang="ts">
     import PostCard from "$lib/components/postCard/postCard.svelte";
-    import type Post from "$lib/models/post";
 
     export let data: any;
+    
 </script>
 
 <form method="post" action="?/create">

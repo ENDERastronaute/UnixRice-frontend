@@ -2,9 +2,10 @@ import type Post from "$lib/models/post";
 
 export default async function fetchPosts(channel: string): Promise<Post[]|undefined> {
     try {
-        const response = await fetch(`${import.meta.env.VITE_API}/posts`);
+        const response = await fetch(`${import.meta.env.VITE_API}/posts/${channel}`);
         
         const posts = await response.json();
+        
 
         posts.forEach((post: any) => {
             post.content = JSON.parse(post.content);
@@ -12,7 +13,7 @@ export default async function fetchPosts(channel: string): Promise<Post[]|undefi
         
         return posts;
 
-    } catch {
+    } catch (err) {
         return undefined;
     }
 }

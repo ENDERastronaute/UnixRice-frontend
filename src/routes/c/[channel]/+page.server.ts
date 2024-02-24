@@ -3,7 +3,7 @@ import { createPost, deletePost, fetchPosts, updatePost } from "$lib/server/post
 import type { PageServerLoadEvent } from "./$types.js";
 
 export async function load({ cookies, params }: PageServerLoadEvent) {
-    cookies.set('category', params.channel, { path: '/' });
+    cookies.set('channel', params.channel, { path: '/' });
     
     const posts = await fetchPosts(params.channel);
     
@@ -17,9 +17,10 @@ export const actions = {
         const description = data.get('description') as string;
         const images = data.getAll('images');
         const author = "";
-        const category = cookies.get('category') as string;
+        const category = cookies.get('channel') as string;
 
         createPost(title, description, images, 1, category)
+        return await fetchPosts(cookies.get('channel') as string)
     },
 
     update: async ({ request }) => {
