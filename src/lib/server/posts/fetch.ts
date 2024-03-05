@@ -6,7 +6,6 @@ export default async function fetchPosts(channel: string): Promise<Post[]|undefi
         
         const posts = await response.json();
         
-
         posts.forEach((post: any) => {
             post.content = JSON.parse(post.content);
         });

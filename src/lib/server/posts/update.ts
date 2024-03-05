@@ -1,11 +1,18 @@
 
-export default function updatePost(id: string, title: string, description: string) {
-    fetch(`${import.meta.env.VITE_API}/post`, {
-        method: 'PUT',
+export default function updatePost(id: string, images: string, title: string, paragraph: string) {
+    console.log(paragraph);
+
+
+    const content = {
+        title: title,
+        paragraph: paragraph,
+        images: images.split(',')
+    }
+
+    fetch(`${import.meta.env.VITE_API}/post/${id}`, {
+        method: 'PATCH',
         body: JSON.stringify({
-            id: id,
-            title: title,
-            description: description
+            content: content
         })
     })
 }

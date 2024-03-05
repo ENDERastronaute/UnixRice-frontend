@@ -27,9 +27,10 @@ export const actions = {
         const data = await request.formData();
         const id = data.get('id') as string;
         const title = data.get('title') as string;
-        const description = data.get('description') as string;
+        const description = data.get('paragraph') as string;
+        const images = data.get('images') as string;
 
-        updatePost(id, title, description);
+        updatePost(id, images, title, description);
     },
 
     delete: async ({ request }) => {
