@@ -1,8 +1,13 @@
+import type User from "./user";
+import type Vote from './vote';
 
 export default interface Post {
     id: string;
-    channelId: number;
-    author: number;
+    channel_id: number;
+    author_id: number;
+    username: string;
+    avatar: string;
+    votes: Vote[];
     content: {
         title: string;
         paragraph?: string;
