@@ -1,6 +1,7 @@
+import { API_URL } from "$env/static/private";
 
 export default function deletePost(id: string) {
-    fetch(`${import.meta.env.VITE_API}/post/${id}`, {
+    fetch(`${API_URL}/post/${id}`, {
         method: 'DELETE'
     }) 
 }

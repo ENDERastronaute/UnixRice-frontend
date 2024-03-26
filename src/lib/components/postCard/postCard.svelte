@@ -73,7 +73,7 @@
             <div class="events">
                 <div class="votes">
                     <input type="checkbox" bind:this={upCheckBox} on:click={onVote}>
-                    <p>{post}</p>
+                    <p>{post.votes}</p>
                     <input type="checkbox" bind:this={downCheckBox} on:click={onVote}>
                 </div>
             </div>

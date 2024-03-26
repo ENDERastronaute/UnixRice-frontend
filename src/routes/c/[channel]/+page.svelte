@@ -3,6 +3,7 @@
 
     export let data: any;
     
+    
 </script>
 
 <form method="post" action="?/create">
@@ -17,7 +18,11 @@
 </form>
 
 <div>
-    {#each data.posts as post}
-        <PostCard post={post}></PostCard>
-    {/each}
+    {#await data.posts}
+        <p>chargement</p>
+    {:then posts}
+        {#each posts as post}
+            <PostCard post={post}></PostCard>
+        {/each}
+    {/await}
 </div>

@@ -12,31 +12,16 @@
         passwordBtnIcon = showPassword ? IconEye : IconEyeOff;
     }
 
+    let id: string|null;
+
     onMount(async () => {
-        const id = new URLSearchParams(window.location.search).get('id');
-
-        document.querySelector('.submit')?.addEventListener('click', async (evt: Event) => {
-            evt.preventDefault();
-
-            const email = (document.querySelector('#email') as HTMLInputElement).value;
-            const password = (document.querySelector('#password') as HTMLInputElement).value;
-
-            
-            await fetch(`${import.meta.env.VITE_API}/user`, {
-                method: 'post',
-                body: JSON.stringify({
-                    id: id,
-                    email: email,
-                    password: password
-                })
-            })
-        });
+        id = new URLSearchParams(window.location.search).get('id');
     })
 </script>
 
 <main class="main">
     <div class="bg"></div>
-    <form action="">
+    <form action="" method="post">
         <h1>Login</h1>
 
         <fieldset>
@@ -51,6 +36,8 @@
                 <svelte:component this={passwordBtnIcon} />
             </button>
         </fieldset>
+
+        <input type="hidden" name="id" value={id}>
 
         <div class="buttons">
             <button class="submit" type="submit">Login</button>

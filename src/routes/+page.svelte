@@ -3,6 +3,9 @@
 	import { IconArrowNarrowDown } from "@tabler/icons-svelte";
 	import { onMount } from "svelte";
   	import Showcase from "$lib/components/showcase/showcase.svelte";
+    import { PUBLIC_LOGIN_URL, PUBLIC_SIGNUP_URL } from "$env/static/public";
+
+	export let data;
 
 	let showMenu = false;
 
@@ -50,8 +53,12 @@
 <Header bind:showMenu></Header>
 <menu class="menu" class:active={showMenu}>
 	<button class="close" on:click={toggleMenu}>close</button>
-	<a href="/login">login</a>
-	<a href={import.meta.env.VITE_DISCORD}>sign up</a>
+	<a href={PUBLIC_LOGIN_URL}>login</a>
+	<a href={PUBLIC_SIGNUP_URL}>sign up</a>
+
+	{#if data.avatar && data.avatar.length > 0}
+		<img src={data.avatar} alt="">
+	{/if}
 </menu>
 <main class="main">
 	<section class="landing">

@@ -1,3 +1,4 @@
+import { API_URL } from "$env/static/private";
 
 export default function updatePost(id: string, images: string, title: string, paragraph: string) {
     console.log(paragraph);
@@ -9,7 +10,7 @@ export default function updatePost(id: string, images: string, title: string, pa
         images: images.split(',')
     }
 
-    fetch(`${import.meta.env.VITE_API}/post/${id}`, {
+    fetch(`${API_URL}/post/${id}`, {
         method: 'PATCH',
         body: JSON.stringify({
             content: content
