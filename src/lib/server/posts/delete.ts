@@ -1,7 +1,7 @@
-import { API_URL } from "$env/static/private";
+import { PUBLIC_API_URL } from "$env/static/public";
 
 export default function deletePost(id: string) {
-    fetch(`${API_URL}/post/${id}`, {
+    fetch(`${PUBLIC_API_URL}/post/${id}`, {
         method: 'DELETE'
     }) 
 }

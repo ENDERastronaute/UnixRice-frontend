@@ -7,6 +7,9 @@
 
 	export let data;
 
+	let avatar = data.avatar;
+	let userId = data.userId;
+
 	let showMenu = false;
 
 	function toggleMenu() {
@@ -50,14 +53,14 @@
 	<meta name="description" content="UnixRice Home Page" />
 </svelte:head>
 
-<Header bind:showMenu></Header>
+<Header bind:showMenu bind:avatar userId={userId}></Header>
 <menu class="menu" class:active={showMenu}>
 	<button class="close" on:click={toggleMenu}>close</button>
 	<a href={PUBLIC_LOGIN_URL}>login</a>
 	<a href={PUBLIC_SIGNUP_URL}>sign up</a>
 
-	{#if data.avatar && data.avatar.length > 0}
-		<img src={data.avatar} alt="">
+	{#if data.avatar}
+		<img src={data.avatar} alt="userId">
 	{/if}
 </menu>
 <main class="main">

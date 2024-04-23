@@ -11,7 +11,8 @@ export async function load({ cookies, params }: PageServerLoadEvent) {
     posts = await fetchPosts(params.channel); 
     
     if (posts) return {
-        posts: posts
+        posts: posts,
+        userId: cookies.get('id')
     };
 }
 
@@ -21,10 +22,10 @@ export const actions = {
         const title = data.get('title') as string;
         const description = data.get('description') as string;
         const images = data.getAll('images');
-        const author = "";
+        const author = cookies.get('id') as unknown as number;
         const category = cookies.get('channel') as string;
 
-        const post = await createPost(title, description, images, 1, category)
+        const post = await createPost(title, description, images, author, category)
 
         if (posts && post) {
             posts = [...posts, post];
@@ -41,15 +42,15 @@ export const actions = {
         const paragraph = data.get('paragraph') as string;
         const images = data.get('images') as any;
 
-        updatePost(id, images, title, paragraph);
-
-        for (let i = 0; i < posts!.length; i++) {
-            if (posts![i].id === id) {
-                posts![i].content.title = title
-                posts![i].content.paragraph = paragraph
-                posts![i].content.images = images
-            }
+        const postIndex: number = posts?.findIndex(post => post.id == id) as number;
+        if (postIndex !== -1) {
+            posts![postIndex].content.title = title;
+            posts![postIndex].content.paragraph = paragraph;
+            posts![postIndex].content.images = images;
+            posts = [...posts!];
         }
+
+        updatePost(id, images, title, paragraph);
     },
 
     delete: async ({ request }) => {

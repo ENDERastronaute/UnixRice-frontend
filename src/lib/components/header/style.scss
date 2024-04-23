@@ -39,4 +39,14 @@ header {
             display: block;
         }
     }
+
+    img {
+        border-radius: 50%;
+        height: 48px;
+        width: 48px;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
 }

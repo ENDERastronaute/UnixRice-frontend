@@ -1,11 +1,10 @@
-import { API_URL } from "$env/static/private";
+import { PUBLIC_API_URL } from "$env/static/public";
 import type Post from "$lib/models/post";
-import fetchOneUser from "../users/fetchOne";
 
 export default async function fetchPosts(channel: string): Promise<Post[]|undefined> {
     try {
         
-        const response = await fetch(`${API_URL}/posts/${channel}`);
+        const response = await fetch(`${PUBLIC_API_URL}/posts/${channel}`);
         
         const posts: Post[] = (await response.json()).data;
 

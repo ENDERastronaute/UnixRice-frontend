@@ -1,11 +1,11 @@
-import { API_URL } from '$env/static/private';
+import { PUBLIC_API_URL } from '$env/static/public';
 import { redirect } from '@sveltejs/kit';
 
 export async function load({ url, cookies }) {
     const code = url.searchParams.get('code');
 
-    const response = await fetch(`${API_URL}/login?code=${code}`);
-
+    const response = await fetch(`${PUBLIC_API_URL}/login?code=${code}`);
+    
     const result = await response.json()
 
     if (result) {

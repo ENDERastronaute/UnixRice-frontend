@@ -1,16 +1,13 @@
-import { API_URL } from "$env/static/private";
+import { PUBLIC_API_URL } from "$env/static/public";
 
 export default function updatePost(id: string, images: string, title: string, paragraph: string) {
-    console.log(paragraph);
-
-
     const content = {
         title: title,
         paragraph: paragraph,
-        images: images.split(',')
+        images: JSON.parse(images)
     }
 
-    fetch(`${API_URL}/post/${id}`, {
+    fetch(`${PUBLIC_API_URL}/post/${id}`, {
         method: 'PATCH',
         body: JSON.stringify({
             content: content
