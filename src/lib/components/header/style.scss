@@ -30,23 +30,86 @@ header {
         top: 50%;
         transform: translateY(-50%);
 
+        img {
+            border-radius: 50%;
+            height: 48px;
+            width: 48px;
+        }
+
         a {
             transition: .05s linear;
             color: rgb(255, 255, 255);
         }
 
-        @media (min-width: $breakpoint_large) {
-            display: block;
-        }
-    }
+        .searchbtn {
+            background: none;
+            border: none;
+            color: white;
 
-    img {
-        border-radius: 50%;
-        height: 48px;
-        width: 48px;
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
+            @media (min-width: $breakpoint_large) {
+                display: none;
+            }
+        }
+
+        .search {
+            position: relative;
+
+            input {
+                color: black;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            .searchresult {
+                background-color: white;
+                border-radius: 0 0 19px 19px;
+                position: absolute;
+                top: calc(100% - 2px);
+                left: 0;
+                width: 100%;
+                
+                li {
+                    position: relative;
+                    padding: 10px;
+                    height: 50px;
+
+                    &:hover::before {
+                        content: '';
+                        height: 40%;
+                        width: 3px;
+                        border-radius: 3px;
+                        background-color: $primary_color_light_1;
+                        position: absolute;
+                        left: 0;
+                        top: 50%;
+                        transform: translate(0, -50%);
+                    }
+
+                    a {
+                        color: black;
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+                        font-weight: 500;
+                        gap: 5px;
+
+                        img {
+                            width: 32px;
+                            height: 32px;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        @media (min-width: $breakpoint_large) {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px;
+        }
     }
 }

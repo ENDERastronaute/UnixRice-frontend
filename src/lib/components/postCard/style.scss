@@ -51,6 +51,21 @@
             }
         }
 
+        .channel {
+            position: absolute;
+            right: 40px;
+
+            h3 {
+                margin-top: 10px;
+
+                a {
+                    font-weight: bold;
+                    text-decoration: underline;
+                    color: #ff4532;
+                }
+            }
+        }
+
         footer {
             width: 100%;
             display: flex;

@@ -9,6 +9,8 @@
 
 	let avatar = data.avatar;
 	let userId = data.userId;
+	let users = data.users;
+	let posts = data.posts;
 
 	let showMenu = false;
 
@@ -19,7 +21,7 @@
 	onMount(() => {
 		const main = document.querySelector(".main") as HTMLElement;
 		const channelsSection = document.querySelector('.channels') as HTMLElement;
-		const headerElements = document.querySelectorAll('header *') as NodeListOf<HTMLElement>;
+		const headerElements = document.querySelectorAll('header a') as NodeListOf<HTMLElement>;
 
 		let channelsSectionVisited = false;
 
@@ -53,7 +55,7 @@
 	<meta name="description" content="UnixRice Home Page" />
 </svelte:head>
 
-<Header bind:showMenu bind:avatar userId={userId}></Header>
+<Header bind:showMenu bind:avatar userId={userId} bind:users></Header>
 <menu class="menu" class:active={showMenu}>
 	<button class="close" on:click={toggleMenu}>close</button>
 	<a href={PUBLIC_LOGIN_URL}>login</a>
@@ -85,7 +87,7 @@
 	</section>
 	<section class="mostviewed">
 		<div class="bg">
-			<Showcase></Showcase>
+			<Showcase userId={userId} posts={posts}></Showcase>
 		</div>
 	</section>
 	<section class="test"></section>

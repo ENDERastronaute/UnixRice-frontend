@@ -5,7 +5,8 @@
     import PostCard from "$lib/components/postCard/postCard.svelte";
     import type Post from "$lib/models/post";
 
-    let posts: Post[] = [];
+    export let posts: Post[]|undefined;
+    export let userId;
 
     onMount(() => {
         const section = document.querySelector('.mostviewed') as HTMLElement;
@@ -37,8 +38,8 @@
     {:else if posts.length === 0}
         <article class="error">No posts avaible</article>
     {:else}
-        {#each posts as post (post)}
-            <PostCard post={post}></PostCard>
+        {#each posts as post}
+            <PostCard userId={userId} post={post} seeChannel></PostCard>
         {/each}
     {/if}
 </div>

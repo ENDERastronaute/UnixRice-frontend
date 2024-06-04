@@ -8,6 +8,7 @@
 
     export let post: Post;
     export let userId: string|number;
+    export let seeChannel: boolean = false;
 
     let titleUpdate = post.content.title;
     let paragraphUpdate = post.content.paragraph ?? '';
@@ -24,6 +25,10 @@
     let index = 0
     let image: string = post.content.images[index];
     let imagesStr = JSON.stringify(post.content.images);
+
+    console.log(post.author_id);
+    console.log(userId)
+    
     
 
     const onVote = (evt: any) => {
@@ -65,7 +70,7 @@
             method: "POST",
             body: JSON.stringify({
                 value: value,
-                user_id: 1 // à changer
+                user_id: userId
             })
         })
     }
@@ -84,17 +89,25 @@
             <p>{paragraphUpdate}</p>
         </div>
 
+        {#if seeChannel}
+            <div class="channel">
+                <h3><a href="/c/{post.channel}">{post.channel}</a></h3>
+            </div>
+        {/if}
+
         <footer>
             <div class="user">
                 <img src={post.avatar} alt="avatar">
                 <p>{post.username}</p>
             </div>
             <div class="actions">
-                <form method="post" action="?/delete">
-                    <input type="hidden" name="id" value={post.id}>
-                    <button type="submit"><IconTrash></IconTrash></button>
-                </form>
-                <button on:click={() => {updateDialog.showModal()}}><IconPencil></IconPencil></button>
+                {#if post.author_id == userId}
+                    <form method="post" action="?/delete">
+                        <input type="hidden" name="id" value={post.id}>
+                        <button type="submit"><IconTrash></IconTrash></button>
+                    </form>
+                    <button on:click={() => {updateDialog.showModal()}}><IconPencil></IconPencil></button>
+                {/if}
             </div>
             <div class="events">
                 <div class="votes">
